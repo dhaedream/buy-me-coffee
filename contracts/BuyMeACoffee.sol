@@ -34,6 +34,13 @@ constructor() {
 function buyCooffee(string memory _name,string memory _message) public payable {
     // requires that payment is greater than 0
     require(msg.value > 0, "can't buy coffee w 0 ETH")
+
+    memos.push(Memo(
+        msg.sender,
+        block.timestamp,
+        _name,
+        _message
+    ));
 }
 
 }

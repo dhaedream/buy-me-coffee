@@ -26,4 +26,13 @@ Memo[] memos;
 
 // address of contract deployer  (for when its time to collect tips)
 address payable owner;
+
+constructor() {
+    owner = payable(msg.sender);
+}
+// memory neans dynamic storage 
+function buyCooffee(string memory _name,string memory _message) public payable {
+    
+}
+
 }

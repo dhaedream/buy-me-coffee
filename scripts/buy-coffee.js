@@ -31,8 +31,11 @@ async function main() {
   // get example accounts/default hardhat owner addresses
   cont[(owner, tipper, tipper2, tipper3)] = await hre.ethers.getSigners();
 
-  //get contract to deploy
-
+  //get contract (to deploy)
+  const BuyMeACoffee = await hre.ethers.getContractFactory("BuyMeACoffee");
+  // deploybcontract
+  const buyMeACoffee = await BuyMeACoffee.deploy();
+  console.log("cof contract deployed at", buyMeACoffee.address);
   // deploy contract
 
   // check account balance before purchase

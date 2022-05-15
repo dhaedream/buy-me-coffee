@@ -5,13 +5,13 @@ import "hardhat/console.sol";
 
 contract BuyMeACoffee {
     // event to emit when memo is created
-    event NewMemo() {
+    event NewMemo(
         // indexed adds count
         address indexed from,
         uint256 timestamp,
         string name,
-        string message,
-    }  
+        string message
+    );  
 
     // memo struck 
     struct Memo {
@@ -59,8 +59,9 @@ contract BuyMeACoffee {
     }
 
   /// @dev retrieve all memos recieved+stored on blockchain
-    function getMemos() public {
-
+    // return array Memo[] in memory
+    function getMemos() public view returns(Memo[] memory) {
+        return memos;
     }
 
 }

@@ -16,6 +16,14 @@ async function getBalance(address) {
 // prints out looped list addresses
 async function printBalances(addresses) {
   let idx = 0;
+  for (const address of addresses) {
+    console.log(`Address ${idx} balance: `, await getBalance(address));
+    idx++;
+  }
+}
+
+//Logs the memos stored on-chain from coffee purchases
+async function printMemos(momos) {
   for (const memo of memos) {
     const timestamp = memo.timestamp;
     const tipper = memo.name;

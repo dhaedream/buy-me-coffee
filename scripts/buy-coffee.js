@@ -29,7 +29,7 @@ async function printBalances(addresses) {
 
 async function main() {
   // get example accounts/default hardhat owner addresses
-  cont[(owner, tipper, tipper2, tipper3)] = await hre.ethers.getSigners();
+  const [owner, tipper, tipper2, tipper3] = await hre.ethers.getSigners();
 
   //get contract + deploy
   const BuyMeACoffee = await hre.ethers.getContractFactory("BuyMeACoffee");

@@ -33,7 +33,7 @@ contract BuyMeACoffee {
         // memory neans dynamic storage 
     function buyCooffee(string memory _name,string memory _message) public payable {
     // requires that payment is greater than 0
-    require(msg.value > 0, "can't buy coffee w 0 ETH")
+    require(msg.value > 0, "can't buy coffee w 0 ETH");
 
     // add to array
     memos.push(Memo(
@@ -49,7 +49,7 @@ contract BuyMeACoffee {
         block.timestamp,
         _name,
         _message
-        )
+        );
     }
 
     /// @dev send entire balance stores in contract

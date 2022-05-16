@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.9.0;
+pragma solidity >=0.4.0 <0.9.0;
 
 import "hardhat/console.sol";
 
@@ -12,7 +12,6 @@ contract BuyMeACoffee {
         string name,
         string message
     );  
-
     // memo struck 
     struct Memo {
         address from;
@@ -31,7 +30,7 @@ contract BuyMeACoffee {
             owner = payable(msg.sender);
         }
         // memory neans dynamic storage 
-    function buyCooffee(string memory _name,string memory _message) public payable {
+    function buyCoffee(string memory _name,string memory _message) public payable {
     // requires that payment is greater than 0
     require(msg.value > 0, "can't buy coffee w 0 ETH");
 

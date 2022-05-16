@@ -23,7 +23,7 @@ async function printBalances(addresses) {
 }
 
 //Logs the memos stored on-chain from coffee purchases
-async function printMemos(momos) {
+async function printMemos(memos) {
   for (const memo of memos) {
     const timestamp = memo.timestamp;
     const tipper = memo.name;
@@ -43,18 +43,26 @@ async function main() {
   const BuyMeACoffee = await hre.ethers.getContractFactory("BuyMeACoffee");
   const buyMeACoffee = await BuyMeACoffee.deploy();
   await buyMeACoffee.deployed();
-  console.log("BuyMeACoffee deployed to :  ", buyMeACoffee.address);
+  // console.log("BuyMeACoffee deployed to :  ", buyMeACoffee.address);
 
   // check account balance before purchase
   const addresses = [owner.address, tipper.address, buyMeACoffee.address];
   console.log("== start ==");
   await printBalances(addresses);
 
-  // withdraw funds
+  //buy owner coffee
 
-  // check balance after withdraw
+  const tip = { value: hre.ethers.utils.parseEther("1")};
 
-  // read all memos left for owner
+  await buyMeACoffee.connect(tipper).buyCoffee("First Tipper", "Heres a Coffee", tip);
+
+  await buyMeACoffee.connect(tipper2).buyCoffee("Tipperr 2", "Keep Coding", tip);
+
+  await buyMeACoffee.connect(tipper3).buyCoffee("Tipster 3", "Stay Curious", tip);
+
+  // check balance after transaction
+  console.log("== after tip ==");
+  await printBalances(addresses);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

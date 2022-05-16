@@ -70,6 +70,12 @@ async function main() {
    // after contract collection
    console.log("== after withdrawal ==");
    await printBalances(addresses);
+
+   //read all memos
+   console.log("== read-memos ==");
+   const memos = await buyMeACoffee.getMemos();
+   printMemos(memos);
+
 }
 
 

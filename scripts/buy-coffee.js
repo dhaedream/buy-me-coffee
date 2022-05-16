@@ -63,7 +63,16 @@ async function main() {
   // check balance after transaction
   console.log("== after tip ==");
   await printBalances(addresses);
+
+  //withdraw from contract
+  await buyMeACoffee.connect(owner).withdrawTips();
+
+   // after contract collection
+   console.log("== after withdrawal ==");
+   await printBalances(addresses);
 }
+
+
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
